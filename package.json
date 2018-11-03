@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/MoonSv/NetEaseCloudMusic-demo#readme",
   "dependencies": {
-    "leancloud-storage": "^3.10.0"
+    "leancloud-storage": "^3.10.0",
+    "qiniu-js": "^1.x"
   }
 }

@@ -1,0 +1,138 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-size: 12px;
+    background-color: #e2e2e2;
+}
+ul, ol{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: inherit
+}
+input{
+    font-size: inherit;
+}
+.wrapper{
+    width: 1440px;
+    height: calc(100vh - 60px);
+    margin: 0 auto;
+    padding: 30px;
+    display: flex;
+}
+.main{
+    border-radius: 5px 0 0 5px;
+    background-color: #111111;
+    width: 80%;
+    color: #d8d8d8;
+    display: flex;
+}
+/* 编辑表单 */
+.main .edit-form{
+    border-left: 1px solid rgba(221, 221, 221, 0.397);
+    box-shadow: 0 0 20px grey;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+}
+.edit-form .row{
+    font-size: 14px;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+}
+.edit-form label{
+    display: inline-block;
+    width: 4em;
+    margin-right: 8px;
+}
+.edit-form input[type=text]{
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: 1px solod #ddd;
+}
+.edit-form .row button[type=submit]{
+    font-size: inherit;
+    margin-left: calc(4em + 8px);
+    padding: 8px 20px;
+    border-radius: 8px;
+    color: #fff;
+    background-color: #4a4a79;
+    cursor: pointer;
+}
+.edit-form .row button[type=submit]:hover{
+    background-color: #383848;
+}
+/* 音乐列表部分 */
+.main  header{
+    padding: 15px 0;
+}
+.main .show-music{
+    width: 70%;    
+    padding: 25px 40px;
+}
+.main .music-list{
+    padding: 15px 0;
+    flex: 1;
+}
+.main .music-list > ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.main .music-list > ul > li{
+    width: 23.5%;
+    border-radius: 10px;
+    height: 150px;
+    margin-bottom: 65px;
+    background-color: #232433;
+}
+.main .music-list > ul > li.active{
+    box-shadow: 0 0 15px #fff
+}
+.main .music-list > ul > li .music-detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 15px;
+}
+.music-detail p:nth-child(1){
+    color: #b0babf;
+}
+.music-detail p:nth-child(2){
+    color: #555767;
+}
+aside{
+    background-color: #1b2022;
+    flex: 1;
+    color: #8d9293;
+    border-radius:  0 5px 5px 0;
+}
+#upload-drop{
+    height: 100%;
+    box-shadow: 0 0 20px grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 0 8px 8px 0;
+}
+#upload-drop:hover{
+    background-color: #fff8d973;
+    color: rgb(27, 27, 53)
+}
+#upload-drop > #upload{
+    padding: 10px;
+    border-radius: 5px;
+}
+#upload{
+    cursor: pointer;
+}
