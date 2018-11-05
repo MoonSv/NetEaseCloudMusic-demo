@@ -97,22 +97,25 @@
         init(model, view) {
             this.model = model;
             this.view = view;
-            this.view.render(model.musics);
-            this.model.fetchAllMusic().then(()=>{
-                this.view.render(this.model.musics);
-            }, (error)=>{
-                console.log(error);
-            });
+            this.renderMusic();
+            this.bindEvents();
             window.eventHub.on('createCard', (music) => {
                 this.model.musics.push(music);
                 this.view.render(model.musics);
             })
         },
-
+        renderMusic(){
+            this.model.fetchAllMusic().then(()=>{
+                this.view.render(this.model.musics);
+            }, (error)=>{
+                console.log(error);
+            });
+        },
         bindEvents() {
             console.log('绑定！')
-            $(this.view.el).find('li').on('click', function (e) {
+            $(this.view.el).on('click', 'li', function (e) {
                 console.log(e.currentTarget);
+                $(e.currentTarget).addClass('active').siblings().removeClass('active');
             })
         }
     };
