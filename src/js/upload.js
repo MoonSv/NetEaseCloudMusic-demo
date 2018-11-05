@@ -12,9 +12,9 @@
             this.model = model;
             this.view = view;
             this.view.render(this.model.data)
-            window.eventHub.on('upload', (data) => {
-                console.log('已订阅upload')
-            })
+            // window.eventHub.on('upload', (data) => {
+            //     console.log('已订阅upload')
+            // })
         },
         initQiniu: function () {
             var uploader = Qiniu.uploader({
@@ -51,12 +51,17 @@
                         // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
 
                         var domain = up.getOption('domain');
-                        var res = parseJSON(info.response);
-                        var sourceLink = 'http://' + domain + '/' + res.key; //获取上传成功后的文件的Url
+                        var res = JSON.parse(info.response);
+                        var sourceLink = domain + '/' + res.key; //获取上传成功后的文件的Url
+                        console.log('res:!')
+                        console.log(res);
+                        console.log('souceLink');
+                        console.log(sourceLink);
                         window.eventHub.emit('upload', {
                             url: sourceLink,
-                            key: res.key
+                            musicName: res.key
                         })
+                        // console.log(eventHub)
                     },
                     'Error': function (up, err, errTip) {
                         //上传出错时,处理相关的事情
