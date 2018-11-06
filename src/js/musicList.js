@@ -1,71 +1,11 @@
 {
     let view = {
         el: ".wrapper .main .music-list ul",
-        template: `
-        <ul>
-            <li>
-                <img width=100% height=100 src="./img/music-cover.png" alt="">
-                <div class="music-detail">
-                    <p>那些你很冒险的梦</p>
-                    <p>林俊杰</p>
-                </div>
-            </li>
-            <li>
-                <img width=100% height=100 src="./img/music-cover.png" alt="">
-                <div>
-                    <p></p>
-                    <p></p>
-                </div>
-            </li>
-            <li>
-                <img width=100% height=100 src="./img/music-cover.png" alt="">
-                <div>
-                    <p></p>
-                    <p></p>
-                </div>
-            </li>
-            <li>
-                <img width=100% height=100 src="./img/music-cover.png" alt="">
-                <div>
-                    <p></p>
-                    <p></p>
-                </div>
-            </li>
-            <li>
-                <img width=100% height=100 src="./img/music-cover.png" alt="">
-                <div>
-                    <p></p>
-                    <p></p>
-                </div>
-            </li>
-            <li>
-                <img width=100% height=100 src="./img/music-cover.png" alt="">
-                <div>
-                    <p></p>
-                    <p></p>
-                </div>
-            </li>
-            <li>
-                <img width=100% height=100 src="./img/music-cover.png" alt="">
-                <div>
-                    <p></p>
-                    <p></p>
-                </div>
-            </li>
-            <li>
-                <img width=100% height=100 src="./img/music-cover.png" alt="">
-                <div>
-                    <p></p>
-                    <p></p>
-                </div>
-            </li>
-        </ul>
-        `,
+        template: ``,
         render: function (data) {
-            console.log(data);
             let renderData = data.map((music) => {
                 return (
-                    `<li>
+                    `<li data-id=${music.id}>
                     <img width=100% height=100 src="./img/music-cover.png" alt="">
                     <div class="music-detail">
                         <p>${music.name}</p>
@@ -82,7 +22,6 @@
             // 批量获取
             var query = new AV.Query('Music');
             return query.find().then(results => {
-                console.log(results);
                 // 返回一个符合条件的 list
                 this.musics = results.map((music) => {
                     return {id: music.id, ...music.attributes}
@@ -112,19 +51,21 @@
             });
         },
         bindEvents() {
-            console.log('绑定！')
             $(this.view.el).on('click', 'li', function (e) {
-                console.log(e.currentTarget);
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
-            })
+                let musicID = $(e.currentTarget).attr('data-id');
+                let musicData;
+                for (let i = 0; i < this.model.musics.length; i++){
+                    let music = this.model.musics[i]
+                    console.log(music)
+                    if (music.id === musicID){
+                        musicData = music;
+                        break
+                    }
+                }
+                window.eventHub.emit('clickCard', musicData);
+            }.bind(this))
         }
     };
     controller.init(model, view);
-
-}
-
-let Animal = {
-    eat: function () {
-        console.log('eat');
-    }
 }

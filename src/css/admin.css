@@ -5,7 +5,7 @@
 }
 body{
     font-size: 12px;
-    background-color: #e2e2e2;
+    background: url('./../img/wallhaven-704290.jpg') no-repeat top/cover;
 }
 ul, ol{
     list-style: none;
@@ -26,6 +26,7 @@ input{
 }
 .main{
     border-radius: 5px 0 0 5px;
+    box-shadow: 0 0 20px grey;
     background-color: #111111;
     width: 80%;
     color: #d8d8d8;

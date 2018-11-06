@@ -59,7 +59,7 @@
                         console.log(sourceLink);
                         window.eventHub.emit('upload', {
                             url: sourceLink,
-                            musicName: res.key
+                            name: res.key
                         })
                         // console.log(eventHub)
                     },
