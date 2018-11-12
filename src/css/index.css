@@ -87,8 +87,10 @@ header>.nav-top {
     font-size: 15px;
     line-height: 15px;
     padding: 11px 5px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.1s;
 }
-.nav-top > ul > li > span.active{
+.nav-top > ul > li.active > span{
     color: #d43c32;
     border-bottom: 2px solid #d43c32;
 }
@@ -99,11 +101,11 @@ main{
 }
 
 main > .suggestion-list{
-    margin-bottom: 45px;
+
 }
 .suggestion-list > p, .latest-music > p{
     padding-left: 10px;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 20px;
     margin-bottom: 11px;
     border-left: 2px solid #d43c32;
@@ -123,8 +125,11 @@ main > .suggestion-list{
     vertical-align: top;
 }
 .suggestion-list ul.musicLists > .musicList > p{
-    /* border: 1px solid red; */
-    padding: 0 5px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    padding: 5px 5px 0;
     font-size: 13px;
     line-height: 1.2;
 }
@@ -135,8 +140,7 @@ main > .suggestion-list{
     
 }
 .latest-music > .musics{
-    padding: 15px 9px 0px;
-
+    padding: 0px 9px;
 }
 .latest-music > .musics  .music-name{
     font-size: 17px;
@@ -144,10 +148,22 @@ main > .suggestion-list{
 .latest-music > .musics li{
     border-bottom: 1px solid #e2e2e3;
     padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.latest-music > .musics .artist-wrapper{
+    display: flex;
+    align-items: center;
+}
+.latest-music > .musics .artist-wrapper img{
+    
 }
 .latest-music > .musics  .artist{
     font-size: 12px;
     color: #958888;
+    vertical-align: center;
+    margin-left: 4px;
 }
 
 /* 底部广告section */
@@ -183,4 +199,12 @@ main > .suggestion-list{
     font-size: 12px;
     color: #888888;
     transform: scale(0.75);
+}
+
+/* tab页之间的切换 */
+.tab-content > ul > li{
+    display: none;
+}
+.tab-content > ul > li.active{
+    display: block;
 }
