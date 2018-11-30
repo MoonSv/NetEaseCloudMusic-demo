@@ -139,27 +139,27 @@ main > .suggestion-list{
     margin: 20px 0;
     
 }
-.latest-music > .musics{
+.latest-music .musics{
     padding: 0px 9px;
 }
-.latest-music > .musics  .music-name{
+.latest-music .musics  .music-name{
     font-size: 17px;
 }
-.latest-music > .musics li{
+.latest-music .musics a{
     border-bottom: 1px solid #e2e2e3;
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.latest-music > .musics .artist-wrapper{
+.latest-music .musics .artist-wrapper{
     display: flex;
     align-items: center;
 }
 .latest-music > .musics .artist-wrapper img{
     
 }
-.latest-music > .musics  .artist{
+.latest-music .musics .artist{
     font-size: 12px;
     color: #958888;
     vertical-align: center;
