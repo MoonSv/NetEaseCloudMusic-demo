@@ -1,9 +1,9 @@
 {
     let view = {
         el: '#music-wrapper',
-        template: `<audio autoplay src={{url}}></audio>`,
+        // template: `<audio autoplay src={{url}}></audio>`,
         render(url){
-            $(this.el).html(this.template.replace('{{url}}', url))
+            $(this.el).find('audio')[0].src = url
         }
     }
     let model = {
@@ -40,10 +40,16 @@
             this.model.getMusicInfo().then(()=>{
                 this.view.render(this.model.data.url)
             })
-            console.log(this.model.data)
+            this.bindEvents()
             
         },
-
+        bindEvents(){
+            $(this.view.el).find('.music-light').on('click', ()=>{
+                $(this.view.el).find('audio')[0].play();
+                $(this.view.el).find('.music-img').toggleClass('active');
+                $(this.view.el).find('.dist .play-icon').toggleClass('playing');
+            })
+        }
     }
-    // controller.init(view, model)
+    controller.init(view, model)
 }
